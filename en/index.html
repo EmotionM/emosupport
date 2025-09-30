@@ -16,77 +16,107 @@
       --primary: #22c55e;
       --link: #60a5fa;
       --border: #1f2937;
-      --accent: #2a3348;
+      --accent: #2a3384;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
       color: var(--text);
       background: linear-gradient(180deg, #0b1221 0%, #0f172a 100%);
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, "PingFang TC", "Noto Sans", "Hiragino Sans", "Microsoft JhengHei", sans-serif;
-      line-height: 1.6;
+      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
     }
     .container {
-      max-width: 1000px;
+      max-width: 960px;
       margin: 0 auto;
-      padding: 24px;
+      padding: 0 16px;
     }
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
     header {
       display: flex;
       align-items: center;
-      gap: 16px;
       padding: 24px 0;
       border-bottom: 1px solid var(--border);
     }
-    header img {
-      width: 48px; height: 48px; border-radius: 10px;
-    }
-    h1 { font-size: 24px; margin: 0; }
-    nav {
-      margin-top: 6px;
+    header h1 {
+      margin: 0 0 8px 0;
+      font-size: 28px;
+      font-weight: 700;
     }
     nav a {
-      color: var(--link);
-      text-decoration: none;
       margin-right: 16px;
       font-weight: 500;
     }
-    nav a:hover { text-decoration: underline; }
-    .card {
-      margin-top: 24px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
+    nav a:last-child { margin-right: 0; }
+
+    section {
+      padding: 24px 0;
     }
-    .card h2 {
-      margin: 0 0 10px 0;
-      font-size: 20px;
+    h2 {
+      margin: 0 0 12px 0;
+      font-size: 22px;
+      font-weight: 700;
     }
-    .card p { color: var(--text); margin: 6px 0; }
+    p { margin: 0 0 12px 0; color: var(--text); }
     .muted { color: var(--muted); }
-    ul { margin: 10px 0 0 20px; color: var(--muted); }
-    li { margin-bottom: 6px; }
-    .grid {
+
+    .card-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
     }
-    @media (max-width: 760px) {
-      .grid { grid-template-columns: 1fr; }
+    @media (max-width: 720px) {
+      .card-grid { grid-template-columns: 1fr; }
     }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    .card h3 {
+      margin: 0 0 8px 0;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .card ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .card li { margin-bottom: 6px; }
+
+    .links {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    @media (max-width: 720px) {
+      .links { grid-template-columns: 1fr; }
+    }
+    .link-item {
+      padding: 12px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
     footer {
-      margin: 32px 0 12px;
-      text-align: center;
+      margin: 24px 0 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
       color: var(--muted);
-      font-size: 13px;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <img src="https://emotionm.github.io/assets/emo-icon.png" alt="EMo icon" />
       <div>
         <h1>EMo Support</h1>
         <nav>
@@ -98,65 +128,92 @@
       </div>
     </header>
 
-    <section class="card">
-      <h2>About EMo</h2>
+    <section aria-labelledby="about">
+      <h2 id="about">About EMo</h2>
       <p>EMo is a simple, easy-to-use mood diary that helps you record daily emotions, build healthy habits, and reflect on mood trends.</p>
       <p class="muted">Your data stays on your device. If iCloud sync is enabled, data is encrypted and stored in your private iCloud account.</p>
     </section>
 
-    <section class="card">
-      <h2>FAQs</h2>
-      <div class="grid">
+    <section aria-labelledby="faqs">
+      <h2 id="faqs">FAQs</h2>
+      <div class="card-grid">
         <div class="card">
-          <h2>1. How do I get started?</h2>
+          <h3>1. How do I get started?</h3>
           <ul>
             <li>On the home screen, tap “+” to record a mood.</li>
             <li>Create daily habit reminders to build positive routines.</li>
             <li>Open “Footprints” to view your weekly summaries.</li>
           </ul>
         </div>
+
         <div class="card">
-          <h2>2. Is my data uploaded?</h2>
+          <h3>2. Is my data uploaded?</h3>
           <ul>
             <li>By default, all data is stored locally on your device.</li>
             <li>If iCloud sync is enabled, data is encrypted and synced to your private iCloud (Apple ID).</li>
             <li>We cannot access, view, or analyze your personal data.</li>
           </ul>
         </div>
+
         <div class="card">
-          <h2>3. Can I delete all data?</h2>
+          <h3>3. How do I enable iCloud sync?</h3>
           <ul>
-            <li>Yes. You can delete all data at any time in the app settings.</li>
-            <li>You can also disable iCloud sync whenever you want.</li>
+            <li>On iPhone, go to Settings → your Apple ID → iCloud → iCloud Drive → enable EMo.</li>
+            <li>Make sure you are signed in with the same Apple ID on all your devices.</li>
           </ul>
         </div>
+
         <div class="card">
-          <h2>4. Is my data shared or used for ads?</h2>
+          <h3>4. Can I export my data?</h3>
           <ul>
-            <li>No data is shared with third parties.</li>
-            <li>Data is not used for advertising or behavioral analysis.</li>
-            <li>Smart suggestions work entirely on your device.</li>
+            <li>Currently, EMo focuses on on-device privacy. Export features will be considered in future updates.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>5. Subscription & trial</h3>
+          <ul>
+            <li>EMo offers optional subscription to unlock premium features.</li>
+            <li>You can manage or cancel your subscription in App Store → Account → Subscriptions.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>6. I found a bug / want to suggest a feature</h3>
+          <ul>
+            <li>Please send us details via email: <a href="mailto:emotionm.app@gmail.com">emotionm.app@gmail.com</a>.</li>
+            <li>Include device model, iOS version, EMo version, and steps to reproduce if possible.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="card">
-      <h2>Contact</h2>
-      <p>Need help or have feedback?</p>
-      <p>Email us: <a href="mailto:emotionm.app@gmail.com">emotionm.app@gmail.com</a></p>
+    <section aria-labelledby="contact">
+      <h2 id="contact">Contact</h2>
+      <p>For support, feedback, or feature requests, email us at <a href="mailto:emotionm.app@gmail.com">emotionm.app@gmail.com</a>.</p>
     </section>
 
-    <section class="card">
-      <h2>Legal & Links</h2>
-      <ul>
-        <li><a href="https://emotionm.github.io/privacy/">Privacy Policy</a></li>
-        <li><a href="https://emotionm.github.io/terms/">Terms of Use</a></li>
-        <li><a href="../">中文支援頁</a></li>
-      </ul>
+    <section aria-labelledby="legal">
+      <h2 id="legal">Legal & Links</h2>
+      <div class="links">
+        <div class="link-item">
+          <a href="https://emotionm.github.io/privacy/">Privacy Policy</a>
+        </div>
+        <div class="link-item">
+          <a href="https://emotionm.github.io/terms/">Terms of Use</a>
+        </div>
+        <div class="link-item">
+          <a href="../">中文支援頁</a>
+        </div>
+        <div class="link-item">
+          <a href="mailto:emotionm.app@gmail.com">Contact Us</a>
+        </div>
+      </div>
     </section>
 
-    <footer>© EMo</footer>
+    <footer>
+      <div>© EMo. All rights reserved.</div>
+    </footer>
   </div>
 </body>
 </html>
